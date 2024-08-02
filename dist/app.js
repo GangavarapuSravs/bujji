@@ -5,8 +5,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 //import dbInit from "./db/init";
-//import routes from "./ROUTES";
-const port = 4003;
+//import routes from "./routes/Demo.routes";
+const port = 4002;
 const app = (0, express_1.default)();
 app.use(express_1.default.json());
 //dbInit()

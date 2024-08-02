@@ -1,44 +1,56 @@
-import {DataTypes, Model, Optional} from "sequelize";
+import { DataTypes, Model, Optional } from "sequelize";
 import sequelizeconnection from "../config";
 
 interface StudentAttributes {
-    id: number;
-    sname: string;
-    course: string;
+    Id: number;
+    name: string;
+    email: string;
+    address: string;
 }
 
-export interface StudentInput extends Optional<StudentAttributes, 'id'> {}
-export interface StudentOutput extends Required<StudentAttributes> {}
+export interface StudentInput extends Optional<StudentAttributes, 'Id'> {}
+export interface studentOutput extends Required<StudentAttributes> {}
+
 class Student extends Model<StudentAttributes, StudentInput> implements StudentAttributes {
-    public id!: number;
-    public sname!: string;
-    public course!: string;
+    public Id!: number;
+    public name!: string;
+    public email!: string;
+    public address!:string;
     public readonly createdAt?: Date;
     public readonly updatedAt?: Date;
 }
 
 Student.init(
     {
-        id: {
+        Id: {
             type: DataTypes.INTEGER,
             primaryKey: true,
             autoIncrement: true,
             unique: true,
             allowNull: false,
         },
-        sname: {
+        name: {
             type: DataTypes.STRING,
             allowNull: false
         },
-        course: {
+        email: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            unique: true
+        },
+        address: {
             type: DataTypes.STRING,
             allowNull: false
         },
     },
     {
+        tableName: 'Student',
         timestamps: true,
         paranoid: true,
         sequelize: sequelizeconnection
-    });
-    
+    }
+);
+
 export default Student;
+
+

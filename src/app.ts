@@ -1,9 +1,9 @@
 import express from "express";
 import dbInit from "./db/init";
 
-import routes from "./Routes";
-
-const port = 3000
+// import routes from "./routes/task.routes";
+import routes from "./routes/task1.route";
+const port = 9001
 
 const app = express();
 
@@ -17,9 +17,3 @@ app.get('/', (req,res) =>{
 app.listen(port, () => {
     console.log(`Server running on port ${port}`);
   });
-
-
-
- 
- 
-
